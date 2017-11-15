@@ -1,0 +1,17 @@
+server:
+  port: 8766 # 注册服务的端口号
+eureka:
+  instance:
+      hostname: localhost
+      statusPageUrl: https://${eureka.hostname}/info
+      healthCheckUrl: https://${eureka.hostname}/health
+      homePageUrl: https://${eureka.hostname}/
+  client:
+    healthcheck:
+          enabled: true
+    registerWithEureka: true #是否将自身注册
+    fetchRegistry: false #如果为true，启动时报警.
+    serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
